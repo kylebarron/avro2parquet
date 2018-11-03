@@ -58,10 +58,6 @@
               <systemProperties>
                 <maven.build.classes.dir>${project.build.outputDirectory}</maven.build.classes.dir>
               </systemProperties>
-              <processors>
-                <!-- list of processors to use -->
-                <processor>com.tideworks.annotation.ByteCodePatchingAnnotationProcessor</processor>
-              </processors>
             </configuration>
           </execution>
         </executions>
@@ -219,7 +215,7 @@
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-log4j12</artifactId>
         </exclusion>
-      </exclusions>			
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
