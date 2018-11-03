@@ -73,49 +73,6 @@
             <arg>-proc:none</arg>
           </compilerArgs>
         </configuration>
-        <executions>
-          <execution>
-            <id>pre-processing</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <inherited>true</inherited>
-            <configuration>
-              <includes>
-                <include>com/tideworks/annotation/ByteCodePatchingAnnotationProcessor.java</include>
-              </includes>
-            </configuration>
-          </execution>
-          <execution>
-            <id>default-compile</id>
-            <inherited>true</inherited>
-            <configuration>
-              <excludes>
-                <exclude>com/tideworks/annotation/ByteCodePatchingAnnotationProcessor.java</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <archive>
-            <index>true</index>
-            <manifest>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              <addClasspath>true</addClasspath>
-              <mainClass>com.tideworks.data_load.DataLoad</mainClass>
-            </manifest>
-          </archive>
-          <excludes>
-            <exclude>com/tideworks/annotation/ByteCodePatchingAnnotationProcessor.class</exclude>
-            <exclude>com/tideworks/annotation/InvokeByteCodePatching.class</exclude>
-          </excludes>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

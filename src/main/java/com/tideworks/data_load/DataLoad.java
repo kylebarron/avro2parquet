@@ -4,8 +4,6 @@ import org.apache.avro.generic.GenericData;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.parquet.avro.AvroParquetReader;
 import org.apache.parquet.hadoop.ParquetReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.File;
@@ -20,7 +18,6 @@ import static com.tideworks.data_load.io.InputFile.nioPathToInputFile;
     Example of reading writing Parquet in java without BigData tools.
 */
 public class DataLoad {
-  private static final Logger LOGGER;
   private static final File progDirPathFile;
 
   static File getProgDirPath() { return progDirPathFile; }
@@ -33,8 +30,6 @@ public class DataLoad {
     String homeDirPath = System.getenv("HOME"); // user home directory
     homeDirPath = homeDirPath != null && !homeDirPath.isEmpty() && existsAndIsDir.test(homeDirPath) ? homeDirPath : ".";
     progDirPathFile = FileSystems.getDefault().getPath(homeDirPath).toFile();
-    LoggingLevel.setLoggingVerbosity(LoggingLevel.DEBUG);
-    LOGGER = LoggingLevel.effectLoggingLevel(() -> LoggerFactory.getLogger(DataLoad.class.getSimpleName()));
   }
 
   public static void main(String[] args) {
@@ -42,7 +37,6 @@ public class DataLoad {
       final Path parquetFilePath = FileSystems.getDefault().getPath("sample.parquet");
       doTestParquet(parquetFilePath);
     } catch (Throwable e) {
-      LOGGER.error("program terminated due to exception:", e);
       System.exit(1); // return non-zero status to indicate program failure
     }
   }
